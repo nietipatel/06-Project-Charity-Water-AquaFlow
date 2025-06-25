@@ -61,7 +61,7 @@ function showStartScreen() {
     const startBtn = document.getElementById('start-btn');
     if (startBtn) startBtn.onclick = () => startGame(0);
   }, 0);
-}
+}  
 
 function startGame(levelIdx) {
   currentLevel = levelIdx;
