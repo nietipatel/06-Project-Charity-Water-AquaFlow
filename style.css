@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  /* Parallax background */
+  background: #f7f7f7;
+  background-image: url('https://images.ctfassets.net/2w85ks0ylymt/210m5hfBucZhE4pAOwD6Z4/a33402dcca40c3d892278b80ba1795b1/SierraLeone_2023_CG-7551.jpg?w=480');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+#charitywater-logo {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.info-link {
+  display: inline-block;
+  margin: 8px 0 16px 0;
+  color: #1976d2;
+  text-decoration: underline;
+  font-size: 1em;
+}
+#game-container {
+  max-width: 480px;
+  margin: 40px auto;
+  background: rgba(200, 230, 255, 0.97); /* light blue with slight transparency for parallax */
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 24px;
+  min-height: 600px;
+  position: relative;
+}
+.button {
+  background: #FFD600;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin: 8px 8px 8px 0;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.button:hover {
+  background: #ffe066;
+}
+#level {
+  font-size: 1.2em;
+  color: #FFD600;
+  margin-bottom: 4px;
+}
+#score {
+  color: #1976d2;
+}
+#pipe-grid {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0;
+}
+.pipe-cell {
+  width: 48px;
+  height: 48px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+.pipe-cell.path-correct {
+  background: #b6fcb6 !important;
+  box-shadow: 0 0 8px 2px #4caf50;
+  z-index: 2;
+}
+.active-pipe {
+  background: #90caf9 !important;
+  border: 2px solid #1976d2;
+  box-shadow: 0 0 8px #1976d2;
+  transition: background 0.2s, border 0.2s;
+}
+.path-correct {
+  background: #b9f6ca !important;
+  box-shadow: 0 0 12px #00c853;
+  border: 2px solid #00c853;
+}
+.path-incorrect {
+  background: #ffcdd2 !important;
+  box-shadow: 0 0 12px #d32f2f;
+  border: 2px solid #d32f2f;
+}
+#score, #level, #message {
+  margin: 8px 0;
+  font-weight: bold;
+}
+#progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 6px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+#progress {
+  height: 100%;
+  background: #FFD600;
+  width: 0%;
+  transition: width 0.3s;
+}
+.collectible-pop {
+  animation: pop 0.4s;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); background: #b2ff59; }
+  100% { transform: scale(1); }
+}
+.obstacle-flash {
+  animation: flash 0.4s;
+}
+@keyframes flash {
+  0% { background: #fff; }
+  30% { background: #ff5252; }
+  100% { background: #fff; }
+}
+.grid-shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+.droplet {
+  position: relative;
+}
+.droplet::after {
+  content: '💧';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  font-size: 1.5em;
+  pointer-events: none;
+  animation: droplet-bounce 0.5s infinite alternate;
+}
+@keyframes droplet-bounce {
+  0% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -60%) scale(1.3); }
+}
+#gameover-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#gameover-modal .button {
+  margin-top: 16px;
+}
+#gameover-modal > div {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #0003;
+  text-align: center;
+  max-width: 90vw;
+}
+.solution-path {
+  background: #fffde7 !important;
+  box-shadow: 0 0 8px 2px #ffd600;
+  border: 2px solid #ffd600;
+  z-index: 1;
+}
